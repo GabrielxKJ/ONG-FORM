@@ -10,7 +10,9 @@
 
 <body>
 	<header>
-		<img src="" alt="Logo">
+		<div class="logo-container">
+			<img class="logo" src="./images/logoafapm.png" alt="Logo">
+		</div>
 		<div class="header-description">
 			<h1>ONG AFAPM - APOIO A FAMÍLIA POLICIAL</h1>
 			<address>
@@ -36,13 +38,15 @@
 				<label for="yearold-input">Idade:</label>
 				<input id="yearold" type="text">
 	
-	
 				<label for="sex-input">Sexo:</label>
 				<input id="sex-input" type="text">
 	
-				<label for="blood-type-input">Telefone Celular:</label>
+				<label for="blood-type-input">Telefone-celular:</label>
 				<input id="blood-type-input" type="text">
-	
+				
+				<label for="blood-type-input">Tipo sanguineo:</label>
+				<input id="blood-type-input" type="text">
+
 				<label for="resp-name">Nome do responsável:</label>
 				<input id="resp-name" type="text">
 	
@@ -53,13 +57,11 @@
 				<input id="kinship-input" type="text">
 	
 				<label for="isAssoc">É associado AFAPM?</label>
-				<select name="" id="isAssoc">
+				<select name="isAssoc" id="isAssoc">
 					<option name="sim" value="sim">sim</option>
 					<option name="não" value="não">não</option>
 				</select>
 	
-				<label for="cel-input"></label>
-				<input id="cel-input" type="tel">
 	
 				<label for="child-plan-input">A criança possui plano de saúde?</label>
 				<select name="" id="chield-plan-input">
@@ -81,7 +83,7 @@
 				
 				<label for="obs-input"></label>
 				<textarea name="obs-input" id="obs-input" type="text" rows="4">Observaçoes:</textarea>
-	
+				<button class="form-btn">Enviar</button>
 			</form>
 		</div>
 	</main>
