@@ -15,6 +15,7 @@ const db = getFirestore(app);
 
 // exemplo de como utilizar uma requisição no database;
 // consulta no banco de dados;
+
 async function getYoung(db) {
   try {
       const jovensCol = collection(db, 'jovens');
@@ -28,7 +29,31 @@ async function getYoung(db) {
 
 
 async function insertDoc(db) {
-  await setDoc(doc(db, ''))
+  await setDoc(doc(db, "jovens", "4"), {
+    id:"4",
+    nome: "Pedro",
+    data_nasc:"18/09/2008",
+    idade:"10",
+    sexo:"masculino",
+    telefone_cel:"13981685938",
+    tipo_sanguineo:"a+",
+    associado:false,
+    possui_plano: true,
+    usa_medicamentos:true,
+    necessidades_especiais: false,
+    responsavel: {
+     nome: "Afonso",
+     cpf:"123.456.789-01",
+     grau_parentesco:"pai",
+    },
+    observacoes: {
+      obs_geral:"Criança levada e sapeca",
+      obs_plano_saude:"Bradesco",
+      obs_medicamentos:"dipirona",
+      obs_necess_espec:"TDH"
+    }
+  });
 }
-  
-getYoung(db);
+
+getYoung(db);  
+insertDoc(db);

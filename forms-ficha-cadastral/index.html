@@ -28,33 +28,33 @@
 	<main>
 		<div class="form-content">
 			<h2>Ficha Cadastral Clubinho de Férias</h2>
-			<form action="" method="post">
+			<form id="ong-form" action="" method="post">
 				<label for="name-input">Nome:</label>
-				<input id="name-input" type="text">
+				<input id="name-input" type="text" name="name-input">
 				
 				<label for="birth-input">Data de Nascimento</label>
-				<input id="dataNasc-input" type="date">
+				<input id="dataNasc-input" type="date" name="dataNasc-input">
 	
 				<label for="yearold-input">Idade:</label>
-				<input id="yearold" type="text">
+				<input id="yearold" type="text" name="yearold-input">
 	
 				<label for="sex-input">Sexo:</label>
-				<input id="sex-input" type="text">
+				<input id="sex-input" type="text" name="sex-input">
 	
-				<label for="blood-type-input">Telefone-celular:</label>
-				<input id="blood-type-input" type="text">
+				<label for="tel-cel-input">Telefone-celular:</label>
+				<input id="tel-cel-input" type="text" name="tel-cel-input">
 				
 				<label for="blood-type-input">Tipo sanguineo:</label>
-				<input id="blood-type-input" type="text">
+				<input id="blood-type-input" type="text" name="blood-type-input">
 
 				<label for="resp-name">Nome do responsável:</label>
-				<input id="resp-name" type="text">
+				<input id="resp-name-input" type="text" name="resp-name-input">
 	
 				<label for="cpf-input">CPF:</label>
-				<input id="cpf-input" type="text">
+				<input id="cpf-input" type="text" name="cpf-input">
 	
 				<label for="kinship-input">Grau de Parentesco:</label>
-				<input id="kinship-input" type="text">
+				<input id="kinship-input" type="text" name="kinship-input">
 	
 				<label for="isAssoc">É associado AFAPM?</label>
 				<select name="isAssoc" id="isAssoc">
@@ -69,7 +69,7 @@
 				</select>
 	
 				<label for="child-med-input">A criança faz uso de medicamentos?</label>
-				<select name="" id="child-med-input">
+				<select name="child-med-input" id="child-med-input">
 					<option name="sim" value="sim">sim</option>
 					<option name="não" value="não">não</option>
 				</select>
@@ -82,10 +82,10 @@
 				
 				<label for="obs-input"></label>
 				<textarea name="obs-input" id="obs-input" type="text" rows="4">Observaçoes:</textarea>
-				<button class="form-btn">Enviar</button>
+				<button class="form-btn" type="submit" value="Enviar">Enviar</button>
 			</form>
 		</div>
 	</main>
-	<!-- <script src="./js/firebase.js"></script> -->
+	<script src="./js/domForm.js"></script>
 </body>
 </html>
