@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, setDoc,  } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, doc, setDoc, query, where } from 'firebase/firestore'
+// import { formInfo } from "./domForm.js";
+
+// console.log(formInfo);
 
 const firebaseConfig = {
     apiKey: "AIzaSyBGgzJjL2apVPmSDwN33CHP_dAQ-AZdQaQ",
@@ -16,44 +19,65 @@ const db = getFirestore(app);
 // exemplo de como utilizar uma requisição no database;
 // consulta no banco de dados;
 
-async function getYoung(db) {
+async function getDbList(db) {
   try {
-      const jovensCol = collection(db, 'jovens');
-      const consultaInst = await getDocs(jovensCol);
-      const jovemList = consultaInst.docs.map(doc => doc.data());
-      console.log(jovemList);
+    const jovensCol = collection(db, 'evento_mulheres_candidatura');
+    // exemplo de query no firebase
+    // const q = query(jovensCol, where("NOME", "==", "Alba Lima"));
+    const consultaInst = await getDocs(jovensCol);
+    const womenList = consultaInst.docs.map(doc => doc.data());
+    const letter = "a"
+    console.log(womenList.filter((women) => women.NOME.startsWith(letter)))
     } catch (error) {
       console.error('Erro ao obter jovens:', error);
     }
   }
 
+  // async function insertDoc(db) {
+  //   await setDoc((db, "evento_mulheres_candidatura", "mulher_29"), {
+  //     id:"mulher_29",
+  //     NOME:"",
+  //     TELEFONE:"",
+  //     ENDERECO:"",
+  //     BAIRRO:"",
+  //     CEP:"",
+  //   });
+  // }
 
-async function insertDoc(db) {
-  await setDoc(doc(db, "jovens", "4"), {
-    id:"4",
-    nome: "Pedro",
-    data_nasc:"18/09/2008",
-    idade:"10",
-    sexo:"masculino",
-    telefone_cel:"13981685938",
-    tipo_sanguineo:"a+",
-    associado:false,
-    possui_plano: true,
-    usa_medicamentos:true,
-    necessidades_especiais: false,
-    responsavel: {
-     nome: "Afonso",
-     cpf:"123.456.789-01",
-     grau_parentesco:"pai",
-    },
-    observacoes: {
-      obs_geral:"Criança levada e sapeca",
-      obs_plano_saude:"Bradesco",
-      obs_medicamentos:"dipirona",
-      obs_necess_espec:"TDH"
-    }
-  });
-}
 
-getYoung(db);  
-insertDoc(db);
+// async function searchBy(value){
+// }
+
+
+// const citiesRef = collection(db, "evento_mulheres_candidatura");
+
+// Create a query against the collection.
+  // async function insertDoc(db) {
+  //   await setDoc(doc(db, "jovens", "5"), {
+  //     id:"4",
+  //     nome: formInfo[0][0],
+  //     data_nasc:formInfo[0][1],
+  //     idade:formInfo[0][2],
+  //     sexo:formInfo[0][3],
+  //     telefone_cel:formInfo[0][4],
+  //     tipo_sanguineo:formInfo[0][5],
+  //     associado:formInfo[0][9],
+  //     possui_plano:formInfo[0][10],
+  //     usa_medicamentos:formInfo[0][11],
+  //     necessidades_especiais: formInfo[0][12],
+  //     responsavel: {
+  //       nome: formInfo[0][6],
+  //       cpf: formInfo[0][7],
+  //       grau_parentesco:formInfo[0][8],
+  //     },
+  //     observacoes: {
+  //       obs_geral:"",
+  //       obs_plano_saude:"",
+  //       obs_medicamentos:"",
+  //       obs_necess_espec:""
+  //     }
+  //   });
+  // }
+
+  // insertDoc(db);
+  getDbList(db);  
