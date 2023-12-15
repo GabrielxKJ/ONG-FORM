@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabela - Mulheres</title>
+  <link rel="stylesheet" href="./style/table.css" />
+</head>
+
+<body>
+  <table id="tabelaMulheres"></table>
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBGgzJjL2apVPmSDwN33CHP_dAQ-AZdQaQ",
+      authDomain: "ong-form-database.firebaseapp.com",
+      projectId: "ong-form-database",
+      storageBucket: "ong-form-database.appspot.com",
+      messagingSenderId: "371352906449",
+      appId: "1:371352906449:web:00bf7c5cf75b8194d8b3f0"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    async function getDbList(db) {
+      try {
+        const jovensCol = collection(db, 'evento_mulheres_candidatura');
+        // exemplo de query no firebase
+        // const q = query(jovensCol, where("NOME", "==", "Alba Lima"));
+        const consultaInst = await getDocs(jovensCol);
+        const womenList = consultaInst.docs.map(doc => doc.data());
+        // womenList.forEach((woman) => {
+        // })
+        console.log(womenList);
+        // console.log(womenList.filter((women) => women.NOME.startsWith(letter)))
+      } catch (error) {
+        console.error('Erro ao obter jovens:', error);
+      }
+    }
+  </script>
+  <script>
+    function renderizarTabela() {
+      // Criar a tabela
+      var tabela = document.createElement("table");
+      // Adicionar cabeçalho (header)
+      let cabecalho = tabela.createTHead();
+      let linhaCabecalho = cabecalho.insertRow();
+      let coluna1 = linhaCabecalho.insertCell(0);
+      let coluna2 = linhaCabecalho.insertCell(1);
+      let coluna3 = linhaCabecalho.insertCell(2);
+      let coluna4 = linhaCabecalho.insertCell(3);
+      let coluna5 = linhaCabecalho.insertCell(4);
+      let coluna6 = linhaCabecalho.insertCell(5);
+
+
+      coluna1.innerHTML = "ID";
+      coluna2.innerHTML = "NOME";
+      coluna3.innerHTML = "ENDERECO";
+      coluna4.innerHTML = "TELEFONE";
+      coluna5.innerHTML = "BAIRRO";
+      coluna6.innerHTML = "CEP";
+
+
+      // Adicionar linhas e células de dados
+      for (var i = 0; i < 3; i++) {
+        var linha = tabela.insertRow();
+        var celula1 = linha.insertCell(0);
+        var celula2 = linha.insertCell(1);
+        var celula3 = linha.insertCell(2);
+        celula1.innerHTML = "Dado " + (i + 1);
+        celula2.innerHTML = "Dado " + (i + 4);
+        celula3.innerHTML = "Dado " + (i + 7);
+      }
+      // Adicionar a tabela ao corpo do documento
+      document.body.appendChild(tabela);
+    }
+    renderizarTabela();
+  </script>
+</body>
+
+</html>

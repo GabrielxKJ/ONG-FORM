@@ -26,28 +26,27 @@ async function getDbList(db) {
     // const q = query(jovensCol, where("NOME", "==", "Alba Lima"));
     const consultaInst = await getDocs(jovensCol);
     const womenList = consultaInst.docs.map(doc => doc.data());
-    const letter = "a"
-    console.log(womenList.filter((women) => women.NOME.startsWith(letter)))
+    // womenList.forEach((woman) => {
+    // })
+    console.log(womenList);
+    // console.log(womenList.filter((women) => women.NOME.startsWith(letter)))
     } catch (error) {
       console.error('Erro ao obter jovens:', error);
     }
   }
 
-  // async function insertDoc(db) {
-  //   await setDoc((db, "evento_mulheres_candidatura", "mulher_29"), {
-  //     id:"mulher_29",
-  //     NOME:"",
-  //     TELEFONE:"",
-  //     ENDERECO:"",
-  //     BAIRRO:"",
-  //     CEP:"",
-  //   });
-  // }
+getDbList(db)
 
-
-// async function searchBy(value){
-// }
-
+  async function insertDoc(db) {
+    await setDoc(doc(db, "evento_mulheres_candidatura", "mulher_51"), {
+      id:"mulher_51",
+      NOME:"Luzinete",
+      TELEFONE:"13981719565",
+      ENDERECO:"",
+      BAIRRO:"Parque de São Vicente",
+      CEP:"",
+    });
+  }
 
 // const citiesRef = collection(db, "evento_mulheres_candidatura");
 
@@ -78,6 +77,49 @@ async function getDbList(db) {
   //     }
   //   });
   // }
+  async function renderizarTabela() {
+    // Criar a tabela
+    var tabela = document.createElement("table");
+    tabela.id = "tabelaMulheres";
+
+    // Adicionar cabeçalho (header)
+    var cabecalho = tabela.createTHead();
+    var linhaCabecalho = cabecalho.insertRow();
+    var colunaNome = linhaCabecalho.insertCell(0);
+    var colunaTelefone = linhaCabecalho.insertCell(1);
+    var colunaBairro = linhaCabecalho.insertCell(2);
+    
+    colunaNome.innerHTML = "<b>Nome</b>";
+    colunaTelefone.innerHTML = "<b>Telefone</b>";
+    colunaBairro.innerHTML = "<b>Bairro</b>";
+
+    // Consulta no banco de dados
+    const mulheresCol = collection(db, 'evento_mulheres_candidatura');
+    const consultaInst = await getDocs(mulheresCol);
+    const mulheresList = consultaInst.docs.map(doc => doc.data());
+
+    // Adicionar linhas e células de dados
+    mulheresList.forEach(mulher => {
+        var linha = tabela.insertRow();
+        var celulaNome = linha.insertCell(0);
+        var celulaTelefone = linha.insertCell(1);
+        var celulaBairro = linha.insertCell(2);
+
+        celulaNome.innerHTML = mulher.NOME;
+        celulaTelefone.innerHTML = mulher.TELEFONE;
+        celulaBairro.innerHTML = mulher.BAIRRO;
+    });
+
+    // Adicionar a tabela ao corpo do documento
+    document.body.appendChild(tabela);
+}
+
+// Chamar a função para renderizar a tabela
+document.addEventListener('DOMContentLoaded', function () {
+  renderizarTabela();
+})
+
+
 
   // insertDoc(db);
-  getDbList(db);  
+  // getDbList(db);  
