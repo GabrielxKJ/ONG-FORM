@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ficha cadatral Clubinho de ferias</title>
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+	<header>
+		<div class="logo-container">
+			<img class="logo" src="./images/logoafapm.png" alt="Logo">
+		</div>
+		<div class="header-description">
+			<h1>ONG AFAPM - APOIO A FAMÍLIA POLICIAL</h1>
+			<address>
+				<p>
+					Sede: Rua Conego Teófilo Fraile n° 49, Esplanada dos 	Barreiros - São Vicente - SP
+				</p>
+				<p>CEP 11340-050-Telefone: <a href="tel:+551334678997">(13)3467-8997</a><p>
+				 <p>CNPJ 30.275.653/0001-44</p>
+				 <p>FUNDADA EM 03/01/2018</p>
+			</address>
+		</div>
+	</header>
+	<main>
+		<div class="form-content">
+			<h2>Ficha Cadastral Clubinho de Férias</h2>
+			<form id="ong-form" action="" method="post">
+				<label for="name-input">Nome:</label>
+				<input id="name-input" type="text" name="name-input">
+				
+				<label for="birth-input">Data de Nascimento</label>
+				<input id="dataNasc-input" type="date" name="dataNasc-input">
+	
+				<label for="yearold-input">Idade:</label>
+				<input id="yearold" type="text" name="yearold-input">
+	
+				<label for="sex-input">Sexo:</label>
+				<input id="sex-input" type="text" name="sex-input">
+	
+				<label for="tel-cel-input">Telefone-celular:</label>
+				<input id="tel-cel-input" type="text" name="tel-cel-input">
+				
+				<label for="blood-type-input">Tipo sanguineo:</label>
+				<input id="blood-type-input" type="text" name="blood-type-input">
+
+				<label for="resp-name">Nome do responsável:</label>
+				<input id="resp-name-input" type="text" name="resp-name-input">
+	
+				<label for="cpf-input">CPF:</label>
+				<input id="cpf-input" type="text" name="cpf-input">
+	
+				<label for="kinship-input">Grau de Parentesco:</label>
+				<input id="kinship-input" type="text" name="kinship-input">
+	
+				<label for="isAssoc">É associado AFAPM?</label>
+				<select name="isAssoc" id="isAssoc">
+					<option name="sim" value="sim">sim</option>
+					<option name="não" value="não">não</option>
+				</select>
+
+				<label for="child-plan-input">A criança possui plano de saúde?</label>
+				<select name="" id="chield-plan-input">
+					<option name="sim" value="sim">sim</option>
+					<option name="não" value="não">não</option>
+				</select>
+	
+				<label for="child-med-input">A criança faz uso de medicamentos?</label>
+				<select name="child-med-input" id="child-med-input">
+					<option name="sim" value="sim">sim</option>
+					<option name="não" value="não">não</option>
+				</select>
+	
+				<label for="has-especial-input">Possui necessidades especiais ?</label>
+				<select id="has-especial-input" type="text"> 
+					<option name="sim" value="sim">sim</option>
+					<option name="não" value="não">não</option>
+				</select>
+				
+				<label for="obs-input"></label>
+				<textarea name="obs-input" id="obs-input" type="text" rows="4">Observaçoes:</textarea>
+				<button class="form-btn" type="submit" value="Enviar">Enviar</button>
+			</form>
+		</div>
+	</main>
+	<script src="./js/domForm.js"></script>
+</body>
+</html>
